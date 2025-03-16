@@ -1,0 +1,11 @@
+/.expo
+node_modules
+/scripts/reset-project.js
+expo-env.d.ts
+/.github
+/dist
+/ios
+/android
+/coverage
+/build-*.tar.gz
+/build-*.tar.gz.part
