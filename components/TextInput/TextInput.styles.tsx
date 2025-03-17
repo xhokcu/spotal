@@ -25,7 +25,7 @@ export const styles = StyleSheet.create({
   input: {
     borderWidth: borderWidth[1],
     paddingHorizontal: spacing[16],
-    height: spacing[44],
+    height: spacing[48],
     borderColor: colorScheme.light.blue[200],
     borderRadius: borderRadius[8],
     flexDirection: flexDirection.row,

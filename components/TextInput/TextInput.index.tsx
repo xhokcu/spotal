@@ -15,6 +15,8 @@ export function CoreTextInput({
   setValue,
   errorMessage,
   isPassword = false,
+  customContainerStyle,
+  customInputStyle,
 }: ICoreTextInput) {
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
 
@@ -23,9 +25,9 @@ export function CoreTextInput({
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, customContainerStyle]}>
       {label && <Text style={styles.labelText}>{label}</Text>}
-      <View style={[styles.input, errorMessage && styles.errorInput]}>
+      <View style={[styles.input, errorMessage && styles.errorInput, customInputStyle]}>
         <TextInputRN
           style={styles.textInput}
           placeholder={placeholder}

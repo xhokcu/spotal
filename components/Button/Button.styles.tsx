@@ -31,7 +31,7 @@ export const styles = StyleSheet.create({
 
   // **Filled Button**
   filledButton: {
-    backgroundColor: colorScheme.light.blue[900],
+    backgroundColor: colorScheme.light.blue[300],
   },
   filledButtonText: {
     color: colorScheme.light.white,
@@ -39,11 +39,11 @@ export const styles = StyleSheet.create({
 
   // **Outlined Button**
   outlinedButton: {
-    borderColor: colorScheme.light.blue[900],
+    borderColor: colorScheme.light.blue[300],
     borderWidth: 1,
   },
   outlinedButtonText: {
-    color: colorScheme.light.blue[900],
+    color: colorScheme.light.blue[300],
   },
 
   // **Small Button**

@@ -38,18 +38,20 @@ export default function Login() {
           </View>
           <Text style={styles.header}>Login to your account.</Text>
           <View style={styles.form}>
+            <TextInput control={control} placeholder="Email" label="Email" name="email" />
             <TextInput
               control={control}
-              placeholder="Enter your email."
-              label="Email"
-              name="email"
-            />
-            <TextInput
-              control={control}
-              placeholder="Enter your password."
+              placeholder="Password"
               label="Password"
               name="password"
               isPassword
+            />
+            <Button
+              customButtonStyle={styles.textButton}
+              title="Forgot your password?"
+              size="medium"
+              type="text"
+              onPress={() => null}
             />
           </View>
         </View>
@@ -90,5 +92,10 @@ const styles = StyleSheet.create({
   },
   form: {
     gap: spacing[24],
+  },
+  textButton: {
+    paddingHorizontal: spacing[0],
+    paddingVertical: spacing[0],
+    alignSelf: 'flex-start',
   },
 });
