@@ -1,8 +1,10 @@
+import React from 'react';
+import { View, SafeAreaView, StyleSheet, Text } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Link } from 'expo-router';
-import React from 'react';
-import { View, Text, SafeAreaView, Pressable, StyleSheet } from 'react-native';
 import { theme } from '@/theme/Theme';
+import Button from '@/components/Button/Button.index';
+import { Onboarding as OnboardingImage } from '@/svg/index';
 
 export default function Onboarding() {
   const handleOnboarded = async () => {
@@ -10,52 +12,53 @@ export default function Onboarding() {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.buttonContainer}>
-        <Link href={'/(auth)/login'} asChild>
-          <Pressable style={styles.blueButton} onPress={handleOnboarded}>
-            <Text style={styles.whiteButtonText}>Login</Text>
-          </Pressable>
-        </Link>
-        <Link href={'/(auth)/signup'} asChild>
-          <Pressable style={styles.whiteButton} onPress={handleOnboarded}>
-            <Text style={styles.blueButtonText}>Signup</Text>
-          </Pressable>
-        </Link>
+    <SafeAreaView style={styles.mainContainer}>
+      <View style={styles.container}>
+        <View style={styles.imageContainer}>
+          <OnboardingImage />
+        </View>
+        <View style={styles.bottomContainer}>
+          <Text style={styles.heading}>Let's get started!</Text>
+          <View style={styles.buttonContainer}>
+            <Link href={'/(auth)/login'} asChild>
+              <Button title="Login" size="large" type="filled" onPress={handleOnboarded} />
+            </Link>
+            <Link href={'/(auth)/signup'} asChild>
+              <Button title="Signup" size="large" type="outlined" onPress={handleOnboarded} />
+            </Link>
+          </View>
+        </View>
       </View>
     </SafeAreaView>
   );
 }
 
-const { colorScheme, spacing, borderRadius } = theme;
+const { colorScheme, alignItems, spacing, fonts, fontSizes, justifyContent } = theme;
 
 const styles = StyleSheet.create({
+  mainContainer: {
+    flex: 1,
+    backgroundColor: colorScheme.light.white,
+  },
   container: {
     flex: 1,
-    marginHorizontal: spacing[16],
-    justifyContent: 'flex-end',
+    justifyContent: justifyContent.flexEnd,
+    padding: spacing[24],
+    gap: spacing[120],
   },
-  blueButton: {
-    paddingVertical: spacing[20],
-    borderRadius: borderRadius[8],
-    backgroundColor: colorScheme.light.blue[800],
-    width: '100%',
-    alignItems: 'center',
+  imageContainer: {
+    alignItems: alignItems.center,
   },
-  whiteButton: {
-    paddingVertical: spacing[20],
-    borderRadius: borderRadius[8],
-    backgroundColor: colorScheme.light.white,
+  bottomContainer: {
+    gap: spacing[36],
     width: '100%',
-    alignItems: 'center',
+  },
+  heading: {
+    fontFamily: fonts.medium,
+    fontSize: fontSizes.heading.medium,
+    textAlign: 'center',
   },
   buttonContainer: {
     gap: spacing[24],
-  },
-  whiteButtonText: {
-    color: colorScheme.light.white,
-  },
-  blueButtonText: {
-    color: colorScheme.light.blue[900],
   },
 });

@@ -13,6 +13,7 @@ export default function Button({
   leftIcon,
   disabled = false,
   isLoading,
+  customButtonStyle,
 }: IButtonProps) {
   const { colorScheme } = theme;
 
@@ -60,7 +61,13 @@ export default function Button({
     <TouchableOpacity
       onPress={onPress}
       disabled={disabled || isLoading}
-      style={[styles.container, buttonStyle, buttonSizeStyle, disabled && styles.disabledButton]}
+      style={[
+        styles.container,
+        buttonStyle,
+        buttonSizeStyle,
+        disabled && styles.disabledButton,
+        customButtonStyle,
+      ]}
     >
       {isLoading ? (
         <ActivityIndicator size="small" color={colorScheme.light.blue[900]} />

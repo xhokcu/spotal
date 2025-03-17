@@ -14,6 +14,14 @@ export const theme = {
     baseline: 'baseline' as ViewStyle['alignItems'],
     stretch: 'stretch' as ViewStyle['alignItems'],
   },
+  justifyContent: {
+    center: 'center' as ViewStyle['justifyContent'],
+    flexStart: 'flex-start' as ViewStyle['justifyContent'],
+    flexEnd: 'flex-end' as ViewStyle['justifyContent'],
+    spaceBetween: 'space-between' as ViewStyle['justifyContent'],
+    spaceEvenly: 'space-evenly' as ViewStyle['justifyContent'],
+    spaceAround: 'space-around' as ViewStyle['justifyContent'],
+  },
   colorScheme: {
     light: {
       blue: {
@@ -59,15 +67,24 @@ export const theme = {
       black: '#000',
     },
   },
-  fonts: {
-    light: 'interLight',
-    regular: 'interRegular',
-    medium: 'interMedium',
-    semibold: 'interSemiBold',
-    bold: 'interBold',
-  },
   fontFamily: {
-    inter: 'Inter',
+    rubik: 'Rubik',
+  },
+  fonts: {
+    light: 'Rubik_300Light',
+    regular: 'Rubik_400Regular',
+    medium: 'Rubik_500Medium',
+    semibold: 'Rubik_600SemiBold',
+    bold: 'Rubik_700Bold',
+  },
+  fontWeights: {
+    light: '300' as TextStyle['fontWeight'],
+    regular: '400' as TextStyle['fontWeight'],
+    medium: '500' as TextStyle['fontWeight'],
+    semiBold: '600' as TextStyle['fontWeight'],
+    bold: '700' as TextStyle['fontWeight'],
+    extraBold: '800' as TextStyle['fontWeight'],
+    ultraBold: '900' as TextStyle['fontWeight'],
   },
   fontSizes: {
     heading: {
@@ -85,21 +102,13 @@ export const theme = {
       xsmall: 10,
     },
   },
-  fontWeights: {
-    light: '300' as TextStyle['fontWeight'],
-    regular: '400' as TextStyle['fontWeight'],
-    medium: '500' as TextStyle['fontWeight'],
-    semiBold: '600' as TextStyle['fontWeight'],
-    bold: '700' as TextStyle['fontWeight'],
-    extraBold: '800' as TextStyle['fontWeight'],
-    ultraBold: '900' as TextStyle['fontWeight'],
-  },
   spacing: {
     0: 0,
     4: 4,
     8: 8,
     12: 12,
     16: 16,
+    18: 18,
     20: 20,
     24: 24,
     28: 28,
@@ -112,6 +121,7 @@ export const theme = {
     56: 56,
     60: 60,
     80: 80,
+    120: 120,
   },
   borderRadius: {
     0: 0,
