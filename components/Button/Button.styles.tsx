@@ -18,7 +18,6 @@ export const styles = StyleSheet.create({
     flexDirection: flexDirection.row,
     gap: spacing[8],
     borderRadius: borderRadius[8],
-    width: 'auto',
     paddingHorizontal: spacing[24],
     alignItems: alignItems.center,
     justifyContent: 'center',
@@ -27,6 +26,7 @@ export const styles = StyleSheet.create({
     fontFamily: fonts.semibold,
     fontSize: fontSizes.body.medium,
     fontWeight: fontWeights.semiBold,
+    lineHeight: spacing[24],
   },
 
   // **Filled Button**
@@ -49,16 +49,17 @@ export const styles = StyleSheet.create({
   // **Small Button**
   smallButton: {
     height: spacing[32],
+    paddingVertical: spacing[8],
   },
 
   // **Medium Button**
   mediumButton: {
-    height: spacing[44],
+    paddingVertical: spacing[12],
   },
 
   // **Large Button**
   largeButton: {
-    height: spacing[56],
+    paddingVertical: spacing[18],
   },
 
   // **Disabled Button**

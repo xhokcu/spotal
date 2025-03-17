@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { ViewStyle } from 'react-native';
 
 export interface IButtonProps {
   onPress: () => void;
@@ -9,4 +10,5 @@ export interface IButtonProps {
   leftIcon?: ReactNode;
   disabled?: boolean;
   isLoading?: boolean;
+  customButtonStyle?: ViewStyle;
 }
