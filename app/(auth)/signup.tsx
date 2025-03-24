@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { SafeAreaView, Text, StyleSheet, View } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Login as LoginImage } from '@/svg';
 import Button from '@/components/Button/Button.index';
 import { theme } from '@/theme/Theme';
@@ -8,6 +7,12 @@ import TextInput from '@/components/TextInput/TextInput.index';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useRegisterSchema, RegisterSchemaType } from '@/helpers/validationSchemas/registerSchema';
+import StepProgress from '@/components/StepProgress/StepProgress.index';
+import { auth, db } from '@/firebase';
+import { doc, setDoc } from 'firebase/firestore';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { router } from 'expo-router';
+import Toast from 'react-native-toast-message';
 
 export default function Signup() {
   const {
@@ -19,10 +24,35 @@ export default function Signup() {
     resolver: yupResolver(useRegisterSchema()),
   });
 
-  const handleSignup = async (data: RegisterSchemaType) => {
-    await AsyncStorage.setItem('token', '1234');
-    // console.log(data);
+  const [errMessage, setErrMessage] = useState<any>();
+
+  const showToast = () => {
+    Toast.show({
+      type: 'success',
+      text1: 'You signed up successfully!',
+    });
   };
+
+  const handleSignup = async (data: RegisterSchemaType) => {
+    const { email, firstName, lastName } = data;
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+      await setDoc(doc(db, 'users', user.uid), {
+        firstName,
+        lastName,
+        email,
+      });
+      showToast();
+      router.replace('/(auth)/login');
+    } catch (err: any) {
+      setErrMessage(err.message);
+    }
+  };
+  const steps = ['At least 8 character', 'Must containe uppercase letter', 'Must contain a number'];
+
+  const [password, setPassword] = useState<string>('');
+  const [isPasswordValid, setIsPasswordValid] = useState<boolean>(false);
 
   return (
     <SafeAreaView style={styles.mainContainer}>
@@ -50,20 +80,29 @@ export default function Signup() {
               />
             </View>
             <TextInput control={control} placeholder="Email" label="Email" name="email" />
-            <TextInput
-              control={control}
-              placeholder="Password"
-              label="Password"
-              name="password"
-              isPassword
-            />
+            <View style={styles.passwordContainer}>
+              <TextInput
+                placeholder="Password"
+                label="Password"
+                isPassword
+                setValue={(val) => setPassword(val)}
+              />
+              {password?.length > 0 && (
+                <StepProgress
+                  steps={steps}
+                  password={password}
+                  setIsPasswordValid={setIsPasswordValid}
+                />
+              )}
+            </View>
+            <Text>{errMessage}</Text>
           </View>
         </View>
 
         <Button
           type={'filled'}
           size="large"
-          disabled={!isValid}
+          disabled={!isValid && !isPasswordValid}
           title="Signup"
           onPress={handleSubmit(handleSignup)}
         />
@@ -97,5 +136,8 @@ const styles = StyleSheet.create({
   },
   form: {
     gap: spacing[24],
+  },
+  passwordContainer: {
+    gap: spacing[8],
   },
 });

@@ -1,7 +1,7 @@
 import { ViewStyle } from 'react-native';
 
 export interface ITextInput {
-  control: any;
+  control?: any;
   placeholder: string;
   label: string;
   value?: string;

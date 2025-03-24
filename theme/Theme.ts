@@ -60,6 +60,9 @@ export const theme = {
         800: '#444B4E',
         900: '#353A3D',
       },
+      success: '#10B981',
+      warning: '#F2AE3F',
+      error: '#C5361A',
       black: '#000',
       white: '#fff',
     },
@@ -125,6 +128,7 @@ export const theme = {
   },
   borderRadius: {
     0: 0,
+    2: 2,
     4: 4,
     8: 8,
     12: 12,

@@ -36,11 +36,11 @@ export const styles = StyleSheet.create({
     flex: 1,
   },
   errorInput: {
-    borderColor: colorScheme.light.red[300],
+    borderColor: colorScheme.light.error,
   },
   errorText: {
     fontFamily: fonts.regular,
     fontSize: fontSizes.body.small,
-    color: colorScheme.light.red[300],
+    color: colorScheme.light.error,
   },
 });

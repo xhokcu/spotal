@@ -22,7 +22,7 @@ export default function Layout() {
       </View>
 
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(drawer)/size_declaration.tsx" />
+      <EditScreenInfo path="app/(tabs)/size_declaration.tsx" />
     </View>
   );
 }

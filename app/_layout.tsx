@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import 'react-native-reanimated';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from '@/hooks/useQuery';
+import Toast from 'react-native-toast-message';
 
 import {
   Rubik_300Light,
@@ -32,7 +33,7 @@ export {
 
 export const unstable_settings = {
   // Ensure that reloading on `/modal` keeps a back button present.
-  initialRouteName: '(drawer)',
+  initialRouteName: '(tabs)',
 };
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -81,6 +82,7 @@ function RootLayoutNav() {
     <ThemeProvider value={DefaultTheme}>
       <QueryClientProvider client={queryClient}>
         <App />
+        <Toast />
       </QueryClientProvider>
     </ThemeProvider>
   );
@@ -91,7 +93,7 @@ function App() {
     <Stack>
       <Stack.Screen name="index" options={{ headerShown: true }} />
       <Stack.Screen name="(auth)" options={{ headerShown: false }} />
-      <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
+      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       <Stack.Screen name="onboarding" options={{ headerShown: false }} />
       {/* <Stack.Screen name="modal" options={{ presentation: 'modal' }} /> */}
     </Stack>

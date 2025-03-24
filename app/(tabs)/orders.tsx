@@ -9,7 +9,7 @@ export default function Layout() {
   const { shadow } = theme;
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>compliants</Text>
+      <Text style={styles.title}>Tab Two</Text>
       <View style={{ ...shadow.dropdown, padding: 10 }}>
         <Button
           title="Solid"
@@ -22,7 +22,7 @@ export default function Layout() {
       </View>
 
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(drawer)/compliants.tsx" />
+      <EditScreenInfo path="app/(tabs)/orders.tsx" />
     </View>
   );
 }

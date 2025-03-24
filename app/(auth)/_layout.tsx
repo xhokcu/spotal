@@ -13,7 +13,7 @@ export default function AuthLayout() {
 
   const handleOnboarding = async () => {
     await AsyncStorage.removeItem('onboarded');
-    router.replace('/onboarding');
+    router.back();
   };
 
   return (
@@ -67,6 +67,12 @@ export default function AuthLayout() {
               />
             </View>
           ),
+        }}
+      />
+      <Stack.Screen
+        name="forgot_password"
+        options={{
+          title: 'Forgot Password?',
         }}
       />
     </Stack>

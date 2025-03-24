@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { SafeAreaView, Text, StyleSheet, View } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { router } from 'expo-router';
 import { useForm } from 'react-hook-form';
-import { useLoginSchema, LoginSchemaType } from '@/helpers/validationSchemas/loginSchema';
+import {
+  useForgotPasswordSchema,
+  ForgotPasswordSchemaType,
+} from '@/helpers/validationSchemas/forgotPasswordSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
 // Theme
 import { theme } from '@/theme/Theme';
@@ -13,36 +15,35 @@ import TextInput from '@/components/TextInput/TextInput.index';
 // Assetss
 import { Login as LoginImage } from '@/svg';
 // Firebase
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { sendPasswordResetEmail } from 'firebase/auth';
 import { auth } from '@/firebase';
 import Toast from 'react-native-toast-message';
 
-export default function Login() {
+export default function ForgotPassword() {
   const {
     control,
     handleSubmit,
     formState: { isValid },
-  } = useForm<LoginSchemaType>({
-    resolver: yupResolver(useLoginSchema()),
+  } = useForm<ForgotPasswordSchemaType>({
+    resolver: yupResolver(useForgotPasswordSchema()),
     mode: 'onChange',
   });
-
-  const [errMessage, setErrMessage] = useState<string>('');
 
   const showToast = () => {
     Toast.show({
       type: 'success',
-      text1: 'You logged in successfully!',
+      text1: 'Şifre sıfırlama bağlantısı e-posta adresinize gönderildi.',
     });
   };
 
-  const onSubmit = async (data: LoginSchemaType) => {
-    const { email, password } = data;
+  const [errMessage, setErrMessage] = useState<string>('');
+
+  const onSubmit = async (data: ForgotPasswordSchemaType) => {
+    const { email } = data;
     try {
-      await signInWithEmailAndPassword(auth, email, password).then((data) => {
-        AsyncStorage.setItem('user', JSON.stringify(data.user.uid));
+      await sendPasswordResetEmail(auth, email).then((data) => {
         showToast();
-        router.replace('/(tabs)');
+        router.replace('/(auth)/login');
       });
     } catch (err: any) {
       setErrMessage(err.message);
@@ -56,23 +57,11 @@ export default function Login() {
           <View style={styles.imageContainer}>
             <LoginImage />
           </View>
-          <Text style={styles.header}>Login to your account.</Text>
+          <Text style={styles.header}>
+            Enter your account’s email address and we’ll send you a link to rest your password..
+          </Text>
           <View style={styles.form}>
             <TextInput control={control} placeholder="Email" label="Email" name="email" />
-            <TextInput
-              control={control}
-              placeholder="Password"
-              label="Password"
-              name="password"
-              isPassword
-            />
-            <Button
-              customButtonStyle={styles.textButton}
-              title="Forgot your password?"
-              size="medium"
-              type="text"
-              onPress={() => router.push('/(auth)/forgot_password')}
-            />
             <Text style={styles.errText}>{errMessage}</Text>
           </View>
         </View>
@@ -81,7 +70,7 @@ export default function Login() {
           type={'filled'}
           size="large"
           disabled={!isValid}
-          title="Login"
+          title="Send Reset Link"
           onPress={handleSubmit(onSubmit)}
         />
       </View>
@@ -108,9 +97,10 @@ const styles = StyleSheet.create({
     alignItems: alignItems.center,
   },
   header: {
-    fontFamily: fonts.semibold,
-    fontSize: fontSizes.heading.small,
+    fontFamily: fonts.regular,
+    fontSize: fontSizes.body.medium,
     textAlign: 'center',
+    color: colorScheme.light.gray[600],
   },
   form: {
     gap: spacing[24],
