@@ -4,7 +4,7 @@ import { ViewStyle } from 'react-native';
 export interface IButtonProps {
   onPress: () => void;
   title: string;
-  type?: 'filled' | 'outlined' | 'text';
+  type?: 'filled' | 'outlined' | 'text' | 'error';
   size?: 'small' | 'medium' | 'large';
   rightIcon?: ReactNode;
   leftIcon?: ReactNode;

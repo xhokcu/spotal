@@ -60,11 +60,13 @@ export const theme = {
         800: '#444B4E',
         900: '#353A3D',
       },
+      background: '#F5F7FB',
       success: '#10B981',
       warning: '#F2AE3F',
       error: '#C5361A',
       black: '#000',
       white: '#fff',
+      transparent: 'transparent',
     },
     dark: {
       black: '#000',
@@ -105,6 +107,9 @@ export const theme = {
       xsmall: 10,
     },
   },
+  lineHeight: {
+    21: 21,
+  },
   spacing: {
     0: 0,
     4: 4,
@@ -136,6 +141,7 @@ export const theme = {
     20: 20,
     24: 24,
     28: 28,
+    30: 30,
     32: 32,
     36: 36,
     40: 40,

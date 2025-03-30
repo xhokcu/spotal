@@ -1,12 +1,8 @@
 /* eslint-disable import/no-unresolved */
-import { Alert, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 import { Text, View } from '@/components/Themed';
-import { Button } from '@rneui/themed';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { router } from 'expo-router';
-import { signOut } from 'firebase/auth';
-import { auth } from '@/firebase';
 import { useEffect, useState } from 'react';
 import { db } from '@/firebase';
 import { collection, query, getDocs } from 'firebase/firestore';
@@ -42,20 +38,9 @@ export default function Home() {
     getDoc();
   }, [userId]);
 
-  const handleLogout = async () => {
-    await AsyncStorage.removeItem('user');
-    try {
-      await signOut(auth);
-      router.replace('/(auth)/login');
-    } catch (err: any) {
-      Alert.alert(err);
-    }
-  };
-
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Today's Tasks</Text>
-      <Button title="Logout" onPress={handleLogout} />
       <View style={{ width: '100%', flex: 1 }}>
         <FlashList
           data={taskList}

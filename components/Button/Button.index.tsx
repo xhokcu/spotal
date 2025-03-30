@@ -1,18 +1,18 @@
 import React from 'react';
-import { Text, TouchableOpacity, ActivityIndicator, View } from 'react-native';
+import { Text, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { IButtonProps } from './Button.types';
 import { styles } from './Button.styles';
 import { theme } from '@/theme/Theme';
 
 export default function Button({
   onPress,
-  title,
+  title = 'Lorem',
   type = 'filled',
   size = 'medium',
   rightIcon,
   leftIcon,
   disabled = false,
-  isLoading,
+  isLoading = false,
   customButtonStyle,
 }: IButtonProps) {
   const { colorScheme } = theme;
@@ -32,6 +32,10 @@ export default function Button({
         break;
       case 'text':
         textStyle = styles.outlinedButtonText;
+        break;
+      case 'error':
+        buttonStyle = styles.errorButton;
+        textStyle = styles.errorButtonText;
         break;
     }
 
@@ -72,11 +76,11 @@ export default function Button({
       {isLoading ? (
         <ActivityIndicator size="small" color={colorScheme.light.blue[900]} />
       ) : (
-        <View>
+        <>
           {leftIcon}
           <Text style={[styles.text, textStyle]}>{title}</Text>
           {rightIcon}
-        </View>
+        </>
       )}
     </TouchableOpacity>
   );

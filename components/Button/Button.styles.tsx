@@ -46,6 +46,15 @@ export const styles = StyleSheet.create({
     color: colorScheme.light.blue[300],
   },
 
+  // **Error Button**
+  errorButton: {
+    borderColor: colorScheme.light.error,
+    borderWidth: 1,
+  },
+  errorButtonText: {
+    color: colorScheme.light.error,
+  },
+
   // **Small Button**
   smallButton: {
     height: spacing[32],
