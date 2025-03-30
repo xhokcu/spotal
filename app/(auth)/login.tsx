@@ -40,7 +40,12 @@ export default function Login() {
     const { email, password } = data;
     try {
       await signInWithEmailAndPassword(auth, email, password).then((data) => {
-        AsyncStorage.setItem('user', JSON.stringify(data.user.uid));
+        const userData = {
+          uid: data.user.uid,
+          email: data.user.email,
+        };
+        const stringData = JSON.stringify(userData);
+        AsyncStorage.setItem('user', stringData);
         showToast();
         router.replace('/(tabs)');
       });

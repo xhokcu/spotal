@@ -1,28 +1,31 @@
 /* eslint-disable import/no-unresolved */
 import { StyleSheet } from 'react-native';
-import { Button } from '@rneui/themed';
-import { theme } from '@/theme/Theme';
-import EditScreenInfo from '@/components/EditScreenInfo';
 import { Text, View } from '@/components/Themed';
+import { getItem } from '@/helpers/asyncStorage/asyncStorage';
+import { useEffect, useState } from 'react';
 
-export default function Layout() {
-  const { shadow } = theme;
+interface IUser {
+  uid: string;
+  email: string;
+}
+
+export default function Profile() {
+  const [user, setUser] = useState<IUser | null>(null);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const item = await getItem('user');
+        const parsedItem = JSON.parse(item as string);
+        setUser(parsedItem);
+      } catch {}
+    };
+    fetchUser();
+  }, []);
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>size_declaration</Text>
-      <View style={{ ...shadow.dropdown, padding: 10 }}>
-        <Button
-          title="Solid"
-          style={{
-            padding: 30,
-          }}
-          buttonStyle={{}}
-          titleStyle={{ fontWeight: 'bold', fontSize: 23, padding: 30 }}
-        />
-      </View>
-
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/size_declaration.tsx" />
+      <Text style={styles.title}>{user?.email}</Text>
     </View>
   );
 }

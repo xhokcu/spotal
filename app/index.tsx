@@ -11,10 +11,10 @@ export default function Index() {
     const checkOnboarding = async () => {
       try {
         const onboarded = await AsyncStorage.getItem('onboarded');
+        const isLoggedIn = await AsyncStorage.getItem('user');
         setIsUserOnboarded(onboarded === 'true');
 
-        const token = await AsyncStorage.getItem('token');
-        setIsAuthenticated(!!token);
+        setIsAuthenticated(!!isLoggedIn);
       } catch {}
 
       setIsLoading(false);

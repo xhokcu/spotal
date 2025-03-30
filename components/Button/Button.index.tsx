@@ -7,8 +7,8 @@ import { theme } from '@/theme/Theme';
 export default function Button({
   onPress,
   title,
-  type,
-  size,
+  type = 'filled',
+  size = 'medium',
   rightIcon,
   leftIcon,
   disabled = false,
