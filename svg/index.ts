@@ -1,3 +1,4 @@
+import ArrowDown from './ArrowDown';
 import ArrowLeft from './ArrowLeft';
 import CheckCircle from './CheckCircle';
 import CloseCircle from './CloseCircle';
@@ -13,6 +14,7 @@ import Visibility from './Visibility';
 import VisibilityOff from './VisibilityOff';
 
 export {
+  ArrowDown,
   ArrowLeft,
   CheckCircle,
   CloseCircle,

@@ -36,7 +36,8 @@ export default function Home() {
       } catch {}
     };
     getDoc();
-  }, [userId]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -44,6 +45,7 @@ export default function Home() {
       <View style={{ width: '100%', flex: 1 }}>
         <FlashList
           data={taskList}
+          extraData={taskList}
           renderItem={({ item }: { item: any }) => <Text>{item.title}</Text>}
         />
       </View>

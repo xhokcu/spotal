@@ -3,7 +3,7 @@ import Svg, { Path } from 'react-native-svg';
 import { memo } from 'react';
 import { ISvgProps } from './SvgProps';
 
-const ArowLeft = (props: ISvgProps) => (
+const ArrowLeft = (props: ISvgProps) => (
   <Svg
     width={16}
     height={16}
@@ -18,5 +18,5 @@ const ArowLeft = (props: ISvgProps) => (
     />
   </Svg>
 );
-const Memo = memo(ArowLeft);
+const Memo = memo(ArrowLeft);
 export default Memo;

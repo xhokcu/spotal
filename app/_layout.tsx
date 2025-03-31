@@ -103,6 +103,13 @@ function App() {
           headerLeft: () => <IconButton icon={<ArrowLeft />} onPress={() => router.back()} />,
         }}
       />
+      <Stack.Screen
+        name="edit_information"
+        options={{
+          title: 'Edit Account',
+          headerLeft: () => <IconButton icon={<ArrowLeft />} onPress={() => router.back()} />,
+        }}
+      />
       <Stack.Screen name="onboarding" options={{ headerShown: false }} />
       {/* <Stack.Screen name="modal" options={{ presentation: 'modal' }} /> */}
     </Stack>

@@ -13,7 +13,7 @@ export default function AuthLayout() {
 
   const handleOnboarding = async () => {
     await AsyncStorage.removeItem('onboarded');
-    router.back();
+    router.push('/onboarding');
   };
 
   return (

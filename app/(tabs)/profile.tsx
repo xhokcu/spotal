@@ -14,6 +14,7 @@ import { signOut } from 'firebase/auth';
 interface IUser {
   uid: string;
   email: string;
+  displayName: string;
 }
 
 function ProfileAvatar({ name }: { name: string }) {
@@ -47,7 +48,10 @@ export default function Profile() {
   };
 
   const handleEdit = () => {
-    router.push('/edit_account');
+    router.push({
+      pathname: '/edit_account',
+      params: { user: JSON.stringify(user) },
+    });
   };
 
   return (
@@ -56,7 +60,7 @@ export default function Profile() {
         <TouchableOpacity onPress={handleEdit}>
           <View style={styles.avatarContainer}>
             <View style={styles.textContainer}>
-              <Text style={styles.nameText}>Helin Okcu</Text>
+              <Text style={styles.nameText}>{user?.displayName}</Text>
               <Text style={styles.emailText}>{user?.email}</Text>
             </View>
             <ProfileAvatar name="Helin Okcu" />

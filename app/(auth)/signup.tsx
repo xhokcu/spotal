@@ -10,7 +10,7 @@ import { useRegisterSchema, RegisterSchemaType } from '@/helpers/validationSchem
 import StepProgress from '@/components/StepProgress/StepProgress.index';
 import { auth, db } from '@/firebase';
 import { doc, setDoc } from 'firebase/firestore';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { router } from 'expo-router';
 import Toast from 'react-native-toast-message';
 
@@ -38,6 +38,9 @@ export default function Signup() {
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
+      await updateProfile(user, {
+        displayName: `${firstName} ${lastName}`,
+      });
       await setDoc(doc(db, 'users', user.uid), {
         firstName,
         lastName,

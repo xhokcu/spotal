@@ -43,6 +43,7 @@ export default function Login() {
         const userData = {
           uid: data.user.uid,
           email: data.user.email,
+          displayName: data.user.displayName,
         };
         const stringData = JSON.stringify(userData);
         AsyncStorage.setItem('user', stringData);
