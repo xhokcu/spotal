@@ -156,6 +156,7 @@ const styles = StyleSheet.create({
     padding: spacing[16],
     justifyContent: justifyContent.spaceBetween,
     ...shadow.small,
+    backgroundColor: colorScheme.light.white,
   },
   regularBoldText: {
     fontFamily: fonts.medium,
@@ -177,5 +178,6 @@ const styles = StyleSheet.create({
     borderRadius: borderRadius[12],
     padding: spacing[16],
     ...shadow.small,
+    backgroundColor: colorScheme.light.white,
   },
 });

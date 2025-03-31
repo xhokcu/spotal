@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { db } from '@/firebase';
 import { collection, query, getDocs } from 'firebase/firestore';
 import { FlashList } from '@shopify/flash-list';
+import { theme } from '@/theme/Theme';
 
 export default function Home() {
   const [userId, setUserId] = useState<any>('');
@@ -52,6 +53,7 @@ export default function Home() {
     </View>
   );
 }
+const { colorScheme } = theme;
 
 const styles = StyleSheet.create({
   container: {
@@ -59,6 +61,7 @@ const styles = StyleSheet.create({
     padding: 24,
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
+    backgroundColor: colorScheme.light.background,
   },
   title: {
     fontSize: 20,
