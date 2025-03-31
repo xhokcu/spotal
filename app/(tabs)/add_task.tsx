@@ -1,6 +1,5 @@
 /* eslint-disable import/no-unresolved */
-import { StyleSheet } from 'react-native';
-import { View } from '@/components/Themed';
+import { StyleSheet, View } from 'react-native';
 import TextInput from '@/components/TextInput/TextInput.index';
 import { theme } from '@/theme/Theme';
 import Button from '@/components/Button/Button.index';
@@ -65,6 +64,5 @@ const styles = StyleSheet.create({
   },
   form: {
     gap: spacing[24],
-    backgroundColor: colorScheme.light.transparent,
   },
 });

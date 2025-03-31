@@ -92,7 +92,6 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     gap: spacing[12],
-    backgroundColor: colorScheme.light.transparent,
   },
   regularText: {
     fontFamily: fonts.regular,

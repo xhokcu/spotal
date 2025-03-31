@@ -1,6 +1,5 @@
 /* eslint-disable import/no-unresolved */
-import { StyleSheet, TouchableOpacity } from 'react-native';
-import { Text, View } from '@/components/Themed';
+import { StyleSheet, TouchableOpacity, Text, View } from 'react-native';
 import { getItem } from '@/helpers/asyncStorage/asyncStorage';
 import { useEffect, useState } from 'react';
 import { theme } from '@/theme/Theme';
@@ -86,7 +85,7 @@ export default function Profile() {
         title="Logout"
         size="medium"
         type="text"
-        leftIcon={<Logout />}
+        leftIcon={<Logout color={colorScheme.light.blue[300]} />}
         onPress={handleLogout}
       />
     </View>
@@ -129,7 +128,6 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     gap: spacing[24],
-    backgroundColor: colorScheme.light.transparent,
   },
   nameText: {
     fontFamily: fonts.medium,

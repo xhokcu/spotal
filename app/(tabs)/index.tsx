@@ -1,7 +1,6 @@
 /* eslint-disable import/no-unresolved */
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
-import { Text, View } from '@/components/Themed';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useEffect, useState } from 'react';
 import { db } from '@/firebase';
@@ -42,7 +41,6 @@ export default function Home() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Today's Tasks</Text>
       <View style={{ width: '100%', flex: 1 }}>
         <FlashList
           data={taskList}
@@ -62,14 +60,5 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
     backgroundColor: colorScheme.light.background,
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
   },
 });
