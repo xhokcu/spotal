@@ -1,6 +1,5 @@
 /* eslint-disable import/no-unresolved */
-import { StyleSheet } from 'react-native';
-import { Text, View } from '@/components/Themed';
+import { StyleSheet, Text, View } from 'react-native';
 import { theme } from '@/theme/Theme';
 import { Edit } from '@/svg';
 import IconButton from '@/components/IconButton/IconButton.index';

@@ -17,13 +17,14 @@ const EditName = (user: any) => {
   );
 };
 
-const EditEmail = (user: any) => {
+const EditEmail = ({ user }: { user: any }) => {
+  const { email } = user;
   return (
     <View style={styles.contentContainer}>
       <Text style={styles.descriptionText}>
         Change the email address associated with your account.
       </Text>
-      <TextInput label="Email" placeholder="helin" />
+      <TextInput label="Email" placeholder="helin" value={email} />
     </View>
   );
 };
@@ -61,7 +62,9 @@ const { fonts, fontSizes, spacing, colorScheme, lineHeight, justifyContent } = t
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: spacing[24],
+    paddingHorizontal: spacing[24],
+    paddingTop: spacing[24],
+    paddingBottom: spacing[48],
     backgroundColor: colorScheme.light.background,
     justifyContent: justifyContent.spaceBetween,
   },

@@ -1,13 +1,18 @@
 import React from 'react';
 import { View, SafeAreaView, StyleSheet, Text } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Link } from 'expo-router';
+import { router } from 'expo-router';
 import { theme } from '@/theme/Theme';
 import Button from '@/components/Button/Button.index';
 import { Onboarding as OnboardingImage } from '@/svg/index';
 
 export default function Onboarding() {
-  const handleOnboarded = async () => {
+  const handleOnboarded = async (route: string) => {
+    if (route === 'login') {
+      router.push('/(auth)/login');
+    } else if (route === 'signup') {
+      router.push('/(auth)/signup');
+    }
     await AsyncStorage.setItem('onboarded', 'true');
   };
 
@@ -20,12 +25,18 @@ export default function Onboarding() {
         <View style={styles.bottomContainer}>
           <Text style={styles.heading}>Let's get started!</Text>
           <View style={styles.buttonContainer}>
-            <Link href={'/(auth)/login'} asChild>
-              <Button title="Login" size="large" type="filled" onPress={handleOnboarded} />
-            </Link>
-            <Link href={'/(auth)/signup'} asChild>
-              <Button title="Signup" size="large" type="outlined" onPress={handleOnboarded} />
-            </Link>
+            <Button
+              title="Login"
+              size="large"
+              type="filled"
+              onPress={() => handleOnboarded('login')}
+            />
+            <Button
+              title="Signup"
+              size="large"
+              type="outlined"
+              onPress={() => handleOnboarded('signup')}
+            />
           </View>
         </View>
       </View>

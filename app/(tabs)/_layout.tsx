@@ -18,6 +18,7 @@ export default function Layout() {
         options={{
           title: 'Home',
           tabBarIcon: ({ focused }) => <Home color={focused ? activeColor : inactiveColor} />,
+          header: () => null,
         }}
       />
       <Tabs.Screen

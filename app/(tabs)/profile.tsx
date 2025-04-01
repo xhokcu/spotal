@@ -14,11 +14,12 @@ interface IUser {
   uid: string;
   email: string;
   displayName: string;
+  firstName: string;
+  lastName: string;
 }
 
-function ProfileAvatar({ name }: { name: string }) {
-  const words = name.split(' ');
-  const initials = words[0].charAt(0) + words[words.length - 1].charAt(0);
+function ProfileAvatar({ firstName, lastName }: { firstName: string; lastName: string }) {
+  const initials = firstName?.charAt(0).toUpperCase() + lastName?.charAt(0).toUpperCase();
   return (
     <View style={styles.avatar}>
       <Text style={styles.avatarText}>{initials}</Text>
@@ -62,7 +63,7 @@ export default function Profile() {
               <Text style={styles.nameText}>{user?.displayName}</Text>
               <Text style={styles.emailText}>{user?.email}</Text>
             </View>
-            <ProfileAvatar name="Helin Okcu" />
+            <ProfileAvatar firstName={user?.firstName || ''} lastName={user?.lastName || ''} />
           </View>
         </TouchableOpacity>
         <View style={styles.itemContainer}>
