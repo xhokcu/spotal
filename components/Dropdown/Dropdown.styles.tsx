@@ -11,11 +11,27 @@ const {
   borderWidth,
   borderRadius,
   justifyContent,
+  shadow,
 } = theme;
 
 export const styles = StyleSheet.create({
   container: {
+    gap: spacing[8],
+  },
+  inputContainer: {
     gap: spacing[4],
+  },
+  dropdowMenu: {
+    backgroundColor: colorScheme.light.white,
+    zIndex: 1,
+    borderRadius: borderRadius[12],
+    ...shadow.small,
+    position: 'absolute',
+    width: '100%',
+    top: 72,
+  },
+  dropdownItem: {
+    padding: spacing[16],
   },
   labelText: {
     fontFamily: fonts.bold,

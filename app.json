@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "alba",
-    "slug": "alba",
+    "name": "spotal",
+    "slug": "spotal",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -27,7 +27,12 @@
       "output": "static",
       "favicon": "./assets/images/favicon.png"
     },
-    "plugins": ["expo-router", "expo-localization", "expo-sqlite", "expo-font"],
+    "plugins": [
+      "expo-router",
+      "expo-localization",
+      "expo-sqlite",
+      "expo-font"
+    ],
     "experiments": {
       "typedRoutes": true
     },
@@ -36,9 +41,9 @@
         "origin": false
       },
       "eas": {
-        "projectId": "ac93e0ed-3a80-4012-9b2d-e90fababceae"
+        "projectId": "0ee3f2f8-670c-451b-a801-5481484456bf"
       }
     },
-    "owner": "alba-mobile"
+    "owner": "helinnokcu"
   }
 }
